@@ -1,0 +1,1155 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/6/2026 2:10:31 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-V7D05LK"
+  DTS:CreatorName="DESKTOP-V7D05LK\ABDULLAH EMAD"
+  DTS:DTSID="{CED0F7DA-C574-4303-ABD6-871BC70B00A4}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dwh_dim_products"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{A4A5CACE-3D0C-4F24-B9D0-963B80C105CA}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete from dwh_dim_products"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{53C1BC8A-F29C-42E9-AB59-2CE31BFF90CB}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete from dwh_dim_products"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{582FBC05-181C-4986-BE60-CDE0BEB861B2}"
+          SQLTask:SqlStatementSource="DELETE FROM dwh.dim_products;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading dwh_dim_products (Products with Categories)"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{C8F9CFD8-662D-454E-835B-1CF3AAC29FC6}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading dwh_dim_products (Products with Categories)"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Inputs[Data Conversion Input].Columns[unit_price]"
+                      cachedDataType="cy"
+                      cachedName="unit_price"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]"
+                      name="Copy of unit_price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Inputs[Derived Column Input].Columns[quantity_per_unit]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="quantity_per_unit"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity_per_unit]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[TRIM](#{Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity_per_unit]})</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">TRIM(quantity_per_unit)</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Inputs[Derived Column Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Category Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [stg].[categories]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [stg].[categories]) [refTable]
+where [refTable].[category_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="category_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_name" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="description" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="picture" dataType="DT_IMAGE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stg_insert_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[category_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Connections[OleDbConnection]"
+                  connectionManagerID="{09EB84BB-8295-46B9-B022-3EF1D5791EC6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_STAGING_DB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Inputs[Lookup Input].Columns[category_id]"
+                      cachedDataType="i4"
+                      cachedName="category_id"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[category_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">category_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Match Output].Columns[category_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Match Output].Columns[category_name]"
+                      name="category_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">category_name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="NORTHWIND_DWH Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dwh].[dim_products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[product_id]"
+                      cachedDataType="i4"
+                      cachedName="product_id"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[product_name]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="product_name"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_name]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[quantity_per_unit]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="quantity_per_unit"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantity_per_unit]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity_per_unit]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[units_in_stock]"
+                      cachedDataType="i2"
+                      cachedName="units_in_stock"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[units_in_stock]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[units_in_stock]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[units_on_order]"
+                      cachedDataType="i2"
+                      cachedName="units_on_order"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[units_on_order]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[units_on_order]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[reorder_level]"
+                      cachedDataType="i2"
+                      cachedName="reorder_level"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[reorder_level]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reorder_level]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[discontinued]"
+                      cachedDataType="bool"
+                      cachedName="discontinued"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[discontinued]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discontinued]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[category_name]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="category_name"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Match Output].Columns[category_name]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[Copy of unit_price]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of unit_price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      dataType="i4"
+                      name="product_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[category_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="category_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantity_per_unit]"
+                      dataType="wstr"
+                      length="50"
+                      name="quantity_per_unit" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      dataType="numeric"
+                      name="unit_price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[units_in_stock]"
+                      dataType="i2"
+                      name="units_in_stock" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[units_on_order]"
+                      dataType="i2"
+                      name="units_on_order" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[reorder_level]"
+                      dataType="i2"
+                      name="reorder_level" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[discontinued]"
+                      dataType="bool"
+                      name="discontinued" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[dwh_create_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="dwh_create_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="NORTHWIND_STAGING_DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{09EB84BB-8295-46B9-B022-3EF1D5791EC6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_STAGING_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      length="40"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_name]"
+                      name="product_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[supplier_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[supplier_id]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[supplier_id]"
+                      name="supplier_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[category_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_id]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[category_id]"
+                      name="category_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity_per_unit]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[quantity_per_unit]"
+                      length="20"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity_per_unit]"
+                      name="quantity_per_unit"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[unit_price]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]"
+                      name="unit_price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[units_in_stock]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[units_in_stock]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[units_in_stock]"
+                      name="units_in_stock"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[units_on_order]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[units_on_order]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[units_on_order]"
+                      name="units_on_order"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reorder_level]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[reorder_level]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reorder_level]"
+                      name="reorder_level"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discontinued]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[discontinued]"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discontinued]"
+                      name="discontinued"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[stg_insert_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[stg_insert_date]"
+                      length="27"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[stg_insert_date]"
+                      name="stg_insert_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_name]"
+                      dataType="wstr"
+                      length="40"
+                      name="product_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[supplier_id]"
+                      dataType="i4"
+                      name="supplier_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[category_id]"
+                      dataType="i4"
+                      name="category_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[quantity_per_unit]"
+                      dataType="wstr"
+                      length="20"
+                      name="quantity_per_unit" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[unit_price]"
+                      dataType="cy"
+                      name="unit_price" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[units_in_stock]"
+                      dataType="i2"
+                      name="units_in_stock" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[units_on_order]"
+                      dataType="i2"
+                      name="units_on_order" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[reorder_level]"
+                      dataType="i2"
+                      name="reorder_level" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[discontinued]"
+                      dataType="bool"
+                      name="discontinued" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[stg_insert_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="stg_insert_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[product_name]"
+                      name="product_name" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[supplier_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[supplier_id]"
+                      name="supplier_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[category_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[category_id]"
+                      name="category_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[quantity_per_unit]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[quantity_per_unit]"
+                      name="quantity_per_unit" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[unit_price]"
+                      dataType="cy"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[unit_price]"
+                      name="unit_price" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[units_in_stock]"
+                      dataType="i2"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[units_in_stock]"
+                      name="units_in_stock" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[units_on_order]"
+                      dataType="i2"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[units_on_order]"
+                      name="units_on_order" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[reorder_level]"
+                      dataType="i2"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[reorder_level]"
+                      name="reorder_level" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[discontinued]"
+                      dataType="bool"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[discontinued]"
+                      name="discontinued" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[stg_insert_date]"
+                      dataType="wstr"
+                      length="27"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[stg_insert_date]"
+                      name="stg_insert_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading dwh_dim_products (Products with Categories).Paths[Data Conversion Output]"
+              endId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Loading dwh_dim_products (Products with Categories).Paths[Derived Column Output]"
+              endId="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Loading dwh_dim_products (Products with Categories).Paths[Lookup Match Output]"
+              endId="Package\Loading dwh_dim_products (Products with Categories)\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_dim_products (Products with Categories).Paths[OLE DB Source Output]"
+              endId="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{D8AA8993-BD2A-4DD3-B464-D4CDA230EAC3}"
+      DTS:From="Package\Delete from dwh_dim_products"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loading dwh_dim_products (Products with Categories)" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="226.4,41.6"
+          Id="Package\Delete from dwh_dim_products"
+          TopLeft="405.714286577945,81.0588234583605" />
+        <NodeLayout
+          Size="336,41.6"
+          Id="Package\Loading dwh_dim_products (Products with Categories)"
+          TopLeft="87.1428573283613,162.882352798404" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="518.914286577945,122.658823458361">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-263.771429249584,40.2235293400432"
+              Start="0,0"
+              End="-263.771429249584,32.7235293400432">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.1117646700216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.1117646700216"
+                    Point2="0,20.1117646700216"
+                    Point3="-4,20.1117646700216" />
+                  <mssgle:LineSegment
+                    End="-259.771429249584,20.1117646700216" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-259.771429249584,20.1117646700216"
+                    Point2="-263.771429249584,20.1117646700216"
+                    Point3="-263.771429249584,24.1117646700216" />
+                  <mssgle:LineSegment
+                    End="-263.771429249584,32.7235293400432" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading dwh_dim_products (Products with Categories)">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="188.8,41.6"
+          Id="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name"
+          TopLeft="118.357143097386,75.8529411148035" />
+        <NodeLayout
+          Size="245.6,41.6"
+          Id="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source"
+          TopLeft="300.500000564115,23.2647058930777" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination"
+          TopLeft="309.785714805734,238.323529260278" />
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Loading dwh_dim_products (Products with Categories)\Derived Column"
+          TopLeft="305.500000447035,130.676470557402" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Loading dwh_dim_products (Products with Categories)\Data Conversion"
+          TopLeft="154.07142863225,180.558823481151" />
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_products (Products with Categories).Paths[OLE DB Source Output]"
+          TopLeft="300.500000564115,44.0647058930777">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-87.742857466729,31.7882352217258"
+              Start="0,0"
+              End="-87.742857466729,24.2882352217258">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-83.742857466729,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-83.742857466729,0"
+                    Point2="-87.742857466729,0"
+                    Point3="-87.742857466729,4" />
+                  <mssgle:LineSegment
+                    End="-87.742857466729,24.2882352217258" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_products (Products with Categories).Paths[Lookup Match Output]"
+          TopLeft="307.157143097386,96.6529411148035">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="74.7428573496487,34.0235294425984"
+              Start="0,0"
+              End="74.7428573496487,26.5235294425984">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="70.7428573496487,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="70.7428573496487,0"
+                    Point2="74.7428573496487,0"
+                    Point3="74.7428573496487,4" />
+                  <mssgle:LineSegment
+                    End="74.7428573496487,26.5235294425984" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="26.5514706308987,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_products (Products with Categories).Paths[Derived Column Output]"
+          TopLeft="305.500000447035,151.476470557402">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-73.8285718147854,29.0823529237487"
+              Start="0,0"
+              End="-73.8285718147854,21.5823529237487">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-69.8285718147854,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-69.8285718147854,0"
+                    Point2="-73.8285718147854,0"
+                    Point3="-73.8285718147854,4" />
+                  <mssgle:LineSegment
+                    End="-73.8285718147854,21.5823529237487" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_products (Products with Categories).Paths[Data Conversion Output]"
+          TopLeft="309.27142863225,201.358823481151">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="114.114286173485,36.9647057791275"
+              Start="0,0"
+              End="114.114286173485,29.4647057791275">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="110.114286173485,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="110.114286173485,0"
+                    Point2="114.114286173485,0"
+                    Point3="114.114286173485,4" />
+                  <mssgle:LineSegment
+                    End="114.114286173485,29.4647057791275" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_products (Products with Categories)\Lookup Category Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[stg].[categories]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_STAGING_DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_products (Products with Categories)\NORTHWIND_DWH Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

@@ -1,0 +1,510 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2026 1:36:53 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-V7D05LK"
+  DTS:CreatorName="DESKTOP-V7D05LK\ABDULLAH EMAD"
+  DTS:DTSID="{E03D0583-DB45-4F2B-B17A-B63A8127A4B9}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dwh_dim_shippers"
+  DTS:PackageType="5"
+  DTS:VersionBuild="4"
+  DTS:VersionGUID="{26913D40-7E74-46F3-B69E-520BA2607503}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete from dwh_dim_shippers"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{64A7173D-17CF-4570-885C-67513E31A534}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete from dwh_dim_shippers"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{582FBC05-181C-4986-BE60-CDE0BEB861B2}"
+          SQLTask:SqlStatementSource="DELETE FROM dwh.dim_shippers;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading dwh_dim_shippers"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{DCB6EF15-C0E6-47B4-B7BC-603E21790C48}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading dwh_dim_shippers"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="NORTHWIND_DWH Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dwh].[dim_shippers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[shipper_id]"
+                      cachedDataType="i4"
+                      cachedName="shipper_id"
+                      externalMetadataColumnId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_id]"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[company_name]"
+                      cachedDataType="wstr"
+                      cachedLength="40"
+                      cachedName="company_name"
+                      externalMetadataColumnId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[company_name]"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[company_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_key]"
+                      dataType="i4"
+                      name="shipper_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_id]"
+                      dataType="i4"
+                      name="shipper_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[company_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="company_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[dwh_create_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="dwh_create_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="NORTHWIND_STAGING_DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[shippers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{09EB84BB-8295-46B9-B022-3EF1D5791EC6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_STAGING_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipper_id]"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]"
+                      name="shipper_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[company_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[company_name]"
+                      length="40"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[company_name]"
+                      name="company_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                      length="24"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[phone]"
+                      name="phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[stg_insert_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[stg_insert_date]"
+                      length="27"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[stg_insert_date]"
+                      name="stg_insert_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipper_id]"
+                      dataType="i4"
+                      name="shipper_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[company_name]"
+                      dataType="wstr"
+                      length="40"
+                      name="company_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="phone" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[stg_insert_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="stg_insert_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[shipper_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[shipper_id]"
+                      name="shipper_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[company_name]"
+                      dataType="wstr"
+                      length="40"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[company_name]"
+                      name="company_name" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[phone]"
+                      name="phone" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[stg_insert_date]"
+                      dataType="wstr"
+                      length="27"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[stg_insert_date]"
+                      name="stg_insert_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading dwh_dim_shippers.Paths[OLE DB Source Output]"
+              endId="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{CBB26615-9D6E-4394-8226-B48D230FED39}"
+      DTS:From="Package\Delete from dwh_dim_shippers"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loading dwh_dim_shippers" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Delete from dwh_dim_shippers"
+          TopLeft="402.142857998914,58.8823528895638" />
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Loading dwh_dim_shippers"
+          TopLeft="162.142857488017,135.352941057828" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="514.542857998914,100.482352889564">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-249.200000510897,34.8705881682646"
+              Start="0,0"
+              End="-249.200000510897,27.3705881682646">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,13.4352940841323" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,13.4352940841323"
+                    Point2="0,17.4352940841323"
+                    Point3="-4,17.4352940841323" />
+                  <mssgle:LineSegment
+                    End="-245.200000510897,17.4352940841323" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-245.200000510897,17.4352940841323"
+                    Point2="-249.200000510897,17.4352940841323"
+                    Point3="-249.200000510897,21.4352940841323" />
+                  <mssgle:LineSegment
+                    End="-249.200000510897,27.3705881682646" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading dwh_dim_shippers">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="245.6,41.6"
+          Id="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source"
+          TopLeft="356.928572176671,25.3823529237488" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination"
+          TopLeft="177.642857445442,128.794117565283" />
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_shippers.Paths[OLE DB Source Output]"
+          TopLeft="479.728572176671,66.9823529237488">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-188.485714731229,61.8117646415341"
+              Start="0,0"
+              End="-188.485714731229,54.3117646415341">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,26.905882320767" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,26.905882320767"
+                    Point2="0,30.905882320767"
+                    Point3="-4,30.905882320767" />
+                  <mssgle:LineSegment
+                    End="-184.485714731229,30.905882320767" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-184.485714731229,30.905882320767"
+                    Point2="-188.485714731229,30.905882320767"
+                    Point3="-188.485714731229,34.905882320767" />
+                  <mssgle:LineSegment
+                    End="-188.485714731229,54.3117646415341" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_shippers\NORTHWIND_STAGING_DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_shippers\NORTHWIND_DWH Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

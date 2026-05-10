@@ -1,0 +1,2617 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/7/2026 10:37:10 AM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-V7D05LK"
+  DTS:CreatorName="DESKTOP-V7D05LK\ABDULLAH EMAD"
+  DTS:DTSID="{50066FFA-67A6-492F-9FAF-BEA932D6278A}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dwh_fact_sales"
+  DTS:PackageType="5"
+  DTS:VersionBuild="31"
+  DTS:VersionGUID="{F6455855-4507-40B6-BF9D-30315692DF35}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Loading dwh_fact_sales"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{66EE7E46-8228-4EF5-88F5-57C7C5D5523F}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading dwh_fact_sales"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading dwh_fact_sales\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input].Columns[freight]"
+                      cachedDataType="cy"
+                      cachedName="freight"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[freight]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input].Columns[unit_price]"
+                      cachedDataType="cy"
+                      cachedName="unit_price"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input].Columns[discount]"
+                      cachedDataType="r4"
+                      cachedName="discount"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discount]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of freight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of freight]"
+                      name="Copy of freight"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[freight]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]"
+                      name="Copy of unit_price"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of discount]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of discount]"
+                      name="Copy of discount"
+                      precision="5"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discount]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling)"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling)"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[order_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="order_date"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_date]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[required_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="required_date"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[required_date]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[shipped_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="shipped_date"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipped_date]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[quantity]"
+                      cachedDataType="i2"
+                      cachedName="quantity"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[Copy of unit_price]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of unit_price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[Copy of discount]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of discount"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of discount]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input].Columns[ship_region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ship_region"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_region]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[order_date_Derived Column]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[order_date_Derived Column]"
+                      name="order_date_Derived Column"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_I4)([REPLACE]((DT_WSTR,10)(DT_DBDATE)#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_date]},"-",""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_I4)(REPLACE((DT_WSTR,10)(DT_DBDATE)order_date,"-",""))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[required_date_Derived Column]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[required_date_Derived Column]"
+                      name="required_date_Derived Column"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[required_date]}) ? NULL(DT_I4) : (DT_I4)([REPLACE]((DT_WSTR,10)(DT_DBDATE)#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[required_date]},"-",""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(required_date) ? NULL(DT_I4) : (DT_I4)(REPLACE((DT_WSTR,10)(DT_DBDATE)required_date,"-",""))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[shipped_date_Derived Column]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[shipped_date_Derived Column]"
+                      name="shipped_date_Derived Column"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipped_date]}) ? NULL(DT_I4) : (DT_I4)([REPLACE]((DT_WSTR,10)(DT_DBDATE)#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipped_date]},"-",""))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(shipped_date) ? NULL(DT_I4) : (DT_I4)(REPLACE((DT_WSTR,10)(DT_DBDATE)shipped_date,"-",""))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[sales_amount_Derived Column]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[sales_amount_Derived Column]"
+                      name="sales_amount_Derived Column"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_NUMERIC,10,2)(#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity]} * #{Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]} * (1 - #{Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of discount]}))</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_NUMERIC,10,2)(quantity * [Copy of unit_price] * (1 - [Copy of discount]))</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[ship_region_Derived Column]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[ship_region_Derived Column]"
+                      name="ship_region_Derived Column"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_region]}) ? "Unknown" : #{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_region]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(ship_region) ? "Unknown" : ship_region</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dwh_dim_customers"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_customers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_customers]) [refTable]
+where [refTable].[customer_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="customer_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="customer_id" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="company_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dwh_create_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[customer_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Inputs[Lookup Input].Columns[customer_id]"
+                      cachedDataType="wstr"
+                      cachedLength="5"
+                      cachedName="customer_id"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[customer_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">customer_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Match Output].Columns[customer_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Match Output].Columns[customer_key]"
+                      name="customer_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">customer_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dwh_dim_employees"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_employees]) [refTable]
+where [refTable].[employee_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="employee_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="employee_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="last_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="first_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="title" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="birth_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hire_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="reports_to" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="manager_name" dataType="DT_WSTR" length="100" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dwh_create_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Inputs[Lookup Input].Columns[employee_id]"
+                      cachedDataType="i4"
+                      cachedName="employee_id"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">employee_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Match Output].Columns[employee_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Match Output].Columns[employee_key]"
+                      name="employee_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">employee_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dwh_dim_products"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_products]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_products]) [refTable]
+where [refTable].[product_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="product_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="product_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="product_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="category_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="quantity_per_unit" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="unit_price" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="units_in_stock" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="units_on_order" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="reorder_level" dataType="DT_I2" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="discontinued" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dwh_create_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Inputs[Lookup Input].Columns[product_id]"
+                      cachedDataType="i4"
+                      cachedName="product_id"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">product_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Match Output].Columns[product_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Match Output].Columns[product_key]"
+                      name="product_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">product_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dwh_dim_shippers"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_shippers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_shippers]) [refTable]
+where [refTable].[shipper_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="shipper_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="shipper_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="company_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dwh_create_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Inputs[Lookup Input].Columns[shipper_id]"
+                      cachedDataType="i4"
+                      cachedName="shipper_id"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">shipper_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Match Output].Columns[shipper_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Match Output].Columns[shipper_key]"
+                      name="shipper_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">shipper_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dwh_dim_ship_info"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_ship_info]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_ship_info]) [refTable]
+where [refTable].[ship_city] = ? and [refTable].[ship_country] = ? and [refTable].[ship_region] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="ship_info_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ship_city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ship_region" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="ship_country" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dwh_create_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_city]};#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_country]};#{Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[ship_region_Derived Column]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input].Columns[ship_city]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ship_city"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_city]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ship_city</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input].Columns[ship_country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ship_country"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_country]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ship_country</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input].Columns[ship_region_Derived Column]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="ship_region_Derived Column"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[ship_region_Derived Column]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">ship_region</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Match Output].Columns[ship_info_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Match Output].Columns[ship_info_key]"
+                      name="ship_info_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">ship_info_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup dwh_dim_suppliers"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [dwh].[dim_suppliers]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [dwh].[dim_suppliers]) [refTable]
+where [refTable].[supplier_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="supplier_key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="supplier_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="company_name" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="city" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country" dataType="DT_WSTR" length="50" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="dwh_create_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[supplier_id]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Inputs[Lookup Input].Columns[supplier_id]"
+                      cachedDataType="i4"
+                      cachedName="supplier_id"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[supplier_id]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">supplier_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Match Output].Columns[supplier_key]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Match Output].Columns[supplier_key]"
+                      name="supplier_key"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">supplier_key</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="NORTHWIND_DWH Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dwh].[fact_sales]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[order_id]"
+                      cachedDataType="i4"
+                      cachedName="order_id"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_id]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_id]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[quantity]"
+                      cachedDataType="i2"
+                      cachedName="quantity"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantity]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[customer_key]"
+                      cachedDataType="i4"
+                      cachedName="customer_key"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Match Output].Columns[customer_key]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[employee_key]"
+                      cachedDataType="i4"
+                      cachedName="employee_key"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Match Output].Columns[employee_key]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[product_key]"
+                      cachedDataType="i4"
+                      cachedName="product_key"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Match Output].Columns[product_key]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[shipper_key]"
+                      cachedDataType="i4"
+                      cachedName="shipper_key"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Match Output].Columns[shipper_key]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[supplier_key]"
+                      cachedDataType="i4"
+                      cachedName="supplier_key"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[supplier_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Match Output].Columns[supplier_key]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[ship_info_key]"
+                      cachedDataType="i4"
+                      cachedName="ship_info_key"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[ship_info_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Match Output].Columns[ship_info_key]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[order_date_Derived Column]"
+                      cachedDataType="i4"
+                      cachedName="order_date_Derived Column"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_date_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[order_date_Derived Column]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[required_date_Derived Column]"
+                      cachedDataType="i4"
+                      cachedName="required_date_Derived Column"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[required_date_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[required_date_Derived Column]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[shipped_date_Derived Column]"
+                      cachedDataType="i4"
+                      cachedName="shipped_date_Derived Column"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipped_date_key]"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[shipped_date_Derived Column]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[Copy of freight]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of freight"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[freight]"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of freight]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[Copy of unit_price]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of unit_price"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of unit_price]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[Copy of discount]"
+                      cachedDataType="numeric"
+                      cachedName="Copy of discount"
+                      cachedPrecision="5"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      lineageId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of discount]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[sales_amount_Derived Column]"
+                      cachedDataType="numeric"
+                      cachedName="sales_amount_Derived Column"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[sales_amount]"
+                      lineageId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output].Columns[sales_amount_Derived Column]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[customer_key]"
+                      dataType="i4"
+                      name="customer_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipper_key]"
+                      dataType="i4"
+                      name="shipper_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[supplier_key]"
+                      dataType="i4"
+                      name="supplier_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[product_key]"
+                      dataType="i4"
+                      name="product_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_key]"
+                      dataType="i4"
+                      name="employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[ship_info_key]"
+                      dataType="i4"
+                      name="ship_info_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[order_date_key]"
+                      dataType="i4"
+                      name="order_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[required_date_key]"
+                      dataType="i4"
+                      name="required_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[shipped_date_key]"
+                      dataType="i4"
+                      name="shipped_date_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[freight]"
+                      dataType="numeric"
+                      name="freight"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[quantity]"
+                      dataType="i2"
+                      name="quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[unit_price]"
+                      dataType="numeric"
+                      name="unit_price"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[discount]"
+                      dataType="numeric"
+                      name="discount"
+                      precision="5"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[sales_amount]"
+                      dataType="numeric"
+                      name="sales_amount"
+                      precision="10"
+                      scale="2" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[dwh_create_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="dwh_create_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="NORTHWIND_STAGING_DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset"></property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT 
+	o.order_id, o.customer_id, o.employee_id, o.order_date,
+	o.required_date, o.shipped_date, o.ship_via AS shipper_id,
+	o.freight, o.ship_city, o.ship_country, o.ship_region,
+	od.product_id, od.unit_price, od.quantity, od.discount,
+	p.supplier_id
+FROM stg.orders AS o
+INNER JOIN stg.order_details AS od
+ON o.order_id = od.order_id
+INNER JOIN stg.products AS p
+ON od.product_id = p.product_id;</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">2</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{09EB84BB-8295-46B9-B022-3EF1D5791EC6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_STAGING_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_id]"
+                      name="order_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      length="5"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[customer_id]"
+                      name="customer_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_id]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]"
+                      name="employee_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[order_date]"
+                      name="order_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[required_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[required_date]"
+                      name="required_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipped_date]"
+                      name="shipped_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipper_id]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[shipper_id]"
+                      name="shipper_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[freight]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[freight]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[freight]"
+                      name="freight"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[ship_city]"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_city]"
+                      name="ship_city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[ship_country]"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_country]"
+                      name="ship_country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[ship_region]"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[ship_region]"
+                      name="ship_region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[product_id]"
+                      name="product_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]"
+                      dataType="cy"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[unit_price]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[unit_price]"
+                      name="unit_price"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity]"
+                      dataType="i2"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[quantity]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[quantity]"
+                      name="quantity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discount]"
+                      dataType="r4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[discount]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[discount]"
+                      name="discount"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[supplier_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[supplier_id]"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[supplier_id]"
+                      name="supplier_id"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_id]"
+                      dataType="i4"
+                      name="order_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[customer_id]"
+                      dataType="wstr"
+                      length="5"
+                      name="customer_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_id]"
+                      dataType="i4"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[order_date]"
+                      dataType="dbTimeStamp"
+                      name="order_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[required_date]"
+                      dataType="dbTimeStamp"
+                      name="required_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipped_date]"
+                      dataType="dbTimeStamp"
+                      name="shipped_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[shipper_id]"
+                      dataType="i4"
+                      name="shipper_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[freight]"
+                      dataType="cy"
+                      name="freight" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[ship_city]"
+                      dataType="wstr"
+                      length="15"
+                      name="ship_city" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[ship_country]"
+                      dataType="wstr"
+                      length="15"
+                      name="ship_country" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[ship_region]"
+                      dataType="wstr"
+                      length="15"
+                      name="ship_region" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[product_id]"
+                      dataType="i4"
+                      name="product_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[unit_price]"
+                      dataType="cy"
+                      name="unit_price" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[quantity]"
+                      dataType="i2"
+                      name="quantity" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[discount]"
+                      dataType="r4"
+                      name="discount" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[supplier_id]"
+                      dataType="i4"
+                      name="supplier_id" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[order_id]"
+                      name="order_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      dataType="wstr"
+                      length="5"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[customer_id]"
+                      name="customer_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[employee_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[employee_id]"
+                      name="employee_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[order_date]"
+                      name="order_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[required_date]"
+                      name="required_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[shipped_date]"
+                      name="shipped_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[shipper_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[shipper_id]"
+                      name="shipper_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[freight]"
+                      dataType="cy"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[freight]"
+                      name="freight" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ship_city]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ship_city]"
+                      name="ship_city" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ship_country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ship_country]"
+                      name="ship_country" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ship_region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ship_region]"
+                      name="ship_region" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[product_id]"
+                      name="product_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[unit_price]"
+                      dataType="cy"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[unit_price]"
+                      name="unit_price" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[quantity]"
+                      dataType="i2"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[quantity]"
+                      name="quantity" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[discount]"
+                      dataType="r4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[discount]"
+                      name="discount" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[supplier_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[supplier_id]"
+                      name="supplier_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Data Conversion Output]"
+              endId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Inputs[Derived Column Input]"
+              name="Data Conversion Output"
+              startId="Package\Loading dwh_fact_sales\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Derived Column Output]"
+              endId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Inputs[Lookup Input]"
+              name="Derived Column Output"
+              startId="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling).Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Lookup Match Output]"
+              endId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Lookup Match Output1]"
+              endId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Lookup Match Output2]"
+              endId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_fact_sales\Lookup dwh_dim_products.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Lookup Match Output3]"
+              endId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Lookup Match Output4]"
+              endId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Inputs[Lookup Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[Lookup Match Output5]"
+              endId="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_fact_sales.Paths[OLE DB Source Output]"
+              endId="Package\Loading dwh_fact_sales\Data Conversion.Inputs[Data Conversion Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate dwh_fact_sales"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{A27B9D38-A9B1-4067-A32B-3ACC57744F95}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate dwh_fact_sales"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{582FBC05-181C-4986-BE60-CDE0BEB861B2}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE dwh.fact_sales;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{6BB1B8DE-2652-48D9-A908-463DEABC8D9B}"
+      DTS:From="Package\Truncate dwh_fact_sales"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loading dwh_fact_sales" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="190.4,41.6"
+          Id="Package\Loading dwh_fact_sales"
+          TopLeft="166.214285992542,162.441176359319" />
+        <NodeLayout
+          Size="195.2,41.6"
+          Id="Package\Truncate dwh_fact_sales"
+          TopLeft="364.785715050539,67.4411764162944" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="462.385715050539,109.041176416294">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-200.971429057997,53.399999943025"
+              Start="0,0"
+              End="-200.971429057997,45.899999943025">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.6999999715125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.6999999715125"
+                    Point2="0,26.6999999715125"
+                    Point3="-4,26.6999999715125" />
+                  <mssgle:LineSegment
+                    End="-196.971429057997,26.6999999715125" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-196.971429057997,26.6999999715125"
+                    Point2="-200.971429057997,26.6999999715125"
+                    Point3="-200.971429057997,30.6999999715125" />
+                  <mssgle:LineSegment
+                    End="-200.971429057997,45.899999943025" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading dwh_fact_sales">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="32" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="212.8,41.6"
+          Id="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers"
+          TopLeft="7.6428571474187,84.9319249485217" />
+        <NodeLayout
+          Size="204.8,41.6"
+          Id="Package\Loading dwh_fact_sales\Lookup dwh_dim_products"
+          TopLeft="418.357143608283,175.520160215828" />
+        <NodeLayout
+          Size="207.2,41.6"
+          Id="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info"
+          TopLeft="208.357143288972,430.899999737915" />
+        <NodeLayout
+          Size="245.6,41.6"
+          Id="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source"
+          TopLeft="9.78571429483755,5.0588235495206" />
+        <NodeLayout
+          Size="206.4,41.6"
+          Id="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers"
+          TopLeft="419.78571516762,352.205882092867" />
+        <NodeLayout
+          Size="214.4,41.6"
+          Id="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees"
+          TopLeft="11.9285713783937,174.578983719768" />
+        <NodeLayout
+          Size="204,41.6"
+          Id="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers"
+          TopLeft="424.785715178263,260.264705767733" />
+        <NodeLayout
+          Size="456.8,41.6"
+          Id="Package\Loading dwh_fact_sales\Derived Column (Date Formatting &amp; Sales Amount Calculation &amp; NULL Handling)"
+          TopLeft="250.728571846716,88.8529411034083" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Loading dwh_fact_sales\Data Conversion"
+          TopLeft="319.071429175077,3.70588240053214" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination"
+          TopLeft="58.3571429057995,286.629411717786" />
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Lookup Match Output5]"
+          TopLeft="278.757143288972,430.899999737915">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-106.800000383173,-102.670588020129"
+              Start="0,0"
+              End="-106.800000383173,-95.1705880201295">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,-37.5402838886041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,-37.5402838886041"
+                    Point2="0,-41.5402838886041"
+                    Point3="-4,-41.5402838886041" />
+                  <mssgle:LineSegment
+                    End="-102.800000383173,-41.5402838886041" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-102.800000383173,-41.5402838886041"
+                    Point2="-106.800000383173,-41.5402838886041"
+                    Point3="-106.800000383173,-45.5402838886041" />
+                  <mssgle:LineSegment
+                    End="-106.800000383173,-95.1705880201295" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-101.591386910336,-36.5402838886041,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Lookup Match Output4]"
+          TopLeft="522.98571516762,393.805882092867">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-211.028571878648,37.0941176450479"
+              Start="0,0"
+              End="-211.028571878648,29.5941176450479">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,14.547058822524" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,14.547058822524"
+                    Point2="0,18.547058822524"
+                    Point3="-4,18.547058822524" />
+                  <mssgle:LineSegment
+                    End="-207.028571878648,18.547058822524" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-207.028571878648,18.547058822524"
+                    Point2="-211.028571878648,18.547058822524"
+                    Point3="-211.028571878648,22.547058822524" />
+                  <mssgle:LineSegment
+                    End="-211.028571878648,29.5941176450479" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-153.705672658074,23.547058822524,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Lookup Match Output3]"
+          TopLeft="524.885715172942,301.864705767733">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,50.3411763251344"
+              Start="0,0"
+              End="0,42.8411763251344">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,42.8411763251344" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,15.6159006625672,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Lookup Match Output2]"
+          TopLeft="523.771429393273,217.120160215828">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,43.1445455519049"
+              Start="0,0"
+              End="0,35.6445455519049">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,35.6445455519049" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,12.0175852759525,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Lookup Match Output1]"
+          TopLeft="226.328571378394,195.849571967798">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="192.028572229889,0"
+              Start="0,0"
+              End="184.528572229889,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="184.528572229889,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="44.0728993961947,5,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Lookup Match Output]"
+          TopLeft="116.585714262906,126.531924948522">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,48.0470587712463"
+              Start="0,0"
+              End="0,40.5470587712463">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.5470587712463" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-48.19138671875,14.4688418856231,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Derived Column Output]"
+          TopLeft="250.728571846716,107.692433025965">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-30.2857146992974,0"
+              Start="0,0"
+              End="-22.7857146992974,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-22.7857146992974,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[Data Conversion Output]"
+          TopLeft="396.671429175077,45.3058824005321">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="82.4571426716391,43.5470587028761"
+              Start="0,0"
+              End="82.4571426716391,36.0470587028761">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,17.7735293514381" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,17.7735293514381"
+                    Point2="0,21.7735293514381"
+                    Point3="4,21.7735293514381" />
+                  <mssgle:LineSegment
+                    End="78.4571426716391,21.7735293514381" />
+                  <mssgle:CubicBezierSegment
+                    Point1="78.4571426716391,21.7735293514381"
+                    Point2="82.4571426716391,21.7735293514381"
+                    Point3="82.4571426716391,25.7735293514381" />
+                  <mssgle:LineSegment
+                    End="82.4571426716391,36.0470587028761" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_fact_sales.Paths[OLE DB Source Output]"
+          TopLeft="255.385714294838,25.1823529750264">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="63.6857148802391,0"
+              Start="0,0"
+              End="56.1857148802391,0">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="56.1857148802391,0" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\Lookup dwh_dim_customers">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_customers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\Lookup dwh_dim_products">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_products]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\Lookup dwh_dim_ship_info">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_ship_info]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\NORTHWIND_STAGING_DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\Lookup dwh_dim_suppliers">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_suppliers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\Lookup dwh_dim_employees">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_employees]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\Lookup dwh_dim_shippers">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[dwh].[dim_shippers]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_fact_sales\NORTHWIND_DWH Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

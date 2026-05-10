@@ -1,0 +1,1430 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/5/2026 7:08:47 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="DESKTOP-V7D05LK"
+  DTS:CreatorName="DESKTOP-V7D05LK\ABDULLAH EMAD"
+  DTS:DTSID="{540C89B4-79F1-41C7-B78D-B84885966F3B}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="17.0.1016.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="dwh_dim_employees"
+  DTS:PackageType="5"
+  DTS:VersionBuild="11"
+  DTS:VersionGUID="{CDA1F96C-C642-4003-B1C1-D97B6F490888}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Delete from dwh_dim_employees"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{FC3C504D-896F-485D-AFBF-ABA730F80B74}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Delete from dwh_dim_employees"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2025; © 2025 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{582FBC05-181C-4986-BE60-CDE0BEB861B2}"
+          SQLTask:SqlStatementSource="DELETE FROM dwh.dim_employees;" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading dwh_dim_employees"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{998FF3AB-3A18-4211-B7CD-85837B090E71}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading dwh_dim_employees"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading dwh_dim_employees\Data Conversion"
+              componentClassID="Microsoft.DataConvert"
+              contactInfo="Data Conversion;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Data Conversion"
+              name="Data Conversion"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_employees\Data Conversion.Inputs[Data Conversion Input]"
+                  name="Data Conversion Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\Data Conversion.Inputs[Data Conversion Input].Columns[birth_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="birth_date"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[birth_date]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\Data Conversion.Inputs[Data Conversion Input].Columns[hire_date]"
+                      cachedDataType="dbTimeStamp"
+                      cachedName="hire_date"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[hire_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output]"
+                  exclusionGroup="1"
+                  name="Data Conversion Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of birth_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of birth_date]"
+                      name="Copy of birth_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[birth_date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of hire_date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of hire_date]"
+                      name="Copy of hire_date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Specifies the input column used as the source of data for the conversion."
+                          name="SourceInputColumnLineageID">#{Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[hire_date]}</property>
+                        <property
+                          dataType="System.Boolean"
+                          description="Indicates whether the column uses the faster, locale-neutral parsing routines."
+                          name="FastParse">false</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Data Conversion Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Data Conversion.Inputs[Data Conversion Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_employees\Derived Column"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Derived Column"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="region"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      truncationRowDisposition="FailComponent"
+                      usageType="readWrite">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[REPLACENULL](#{Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[region]},"Unknown")</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">REPLACENULL(region,"Unknown")</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input].Columns[manager_last_name]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="manager_last_name"
+                      lineageId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_last_name]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input].Columns[manager_first_name]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="manager_first_name"
+                      lineageId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_first_name]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Output].Columns[manager_full_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      length="31"
+                      lineageId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Output].Columns[manager_full_name]"
+                      name="manager_full_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">[ISNULL](#{Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_first_name]}) ? "Top Level Management" : #{Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_first_name]} + " " + #{Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_last_name]}</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">ISNULL(manager_first_name) ? "Top Level Management" : manager_first_name + " " + manager_last_name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_employees\Lookup Manager Name"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Lookup Manager Name"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [stg].[employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [stg].[employees]) [refTable]
+where [refTable].[employee_id] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="employee_id" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="last_name" dataType="DT_WSTR" length="20" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="first_name" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="title" dataType="DT_WSTR" length="30" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="title_of_courtesy" dataType="DT_WSTR" length="25" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="birth_date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="hire_date" dataType="DT_DBTIMESTAMP" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="address" dataType="DT_WSTR" length="60" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="city" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="region" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="postal_code" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="country" dataType="DT_WSTR" length="15" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="home_phone" dataType="DT_WSTR" length="24" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="extension" dataType="DT_WSTR" length="4" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="photo" dataType="DT_IMAGE" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="notes" dataType="DT_NTEXT" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="reports_to" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="photo_path" dataType="DT_WSTR" length="255" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="stg_insert_date" dataType="DT_WSTR" length="27" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reports_to]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Connections[OleDbConnection]"
+                  connectionManagerID="{09EB84BB-8295-46B9-B022-3EF1D5791EC6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_STAGING_DB]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Inputs[Lookup Input].Columns[reports_to]"
+                      cachedDataType="i4"
+                      cachedName="reports_to"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reports_to]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">employee_id</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="IgnoreFailure"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Lookup Manager Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_last_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_last_name]"
+                      name="manager_last_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">last_name</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_first_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Copy Column"
+                      length="10"
+                      lineageId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output].Columns[manager_first_name]"
+                      name="manager_first_name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">first_name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Lookup Manager Name.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\Lookup Manager Name.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="NORTHWIND_DWH Destination"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[dwh].[dim_employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Connections[OleDbConnection]"
+                  connectionManagerID="{582FBC05-181C-4986-BE60-CDE0BEB861B2}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_DWH]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[employee_id]"
+                      cachedDataType="i4"
+                      cachedName="employee_id"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_id]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[last_name]"
+                      cachedDataType="wstr"
+                      cachedLength="20"
+                      cachedName="last_name"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[last_name]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[first_name]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="first_name"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[first_name]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[title]"
+                      cachedDataType="wstr"
+                      cachedLength="30"
+                      cachedName="title"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[title]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[city]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="city"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[city]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[region]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="region"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[region]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[country]"
+                      cachedDataType="wstr"
+                      cachedLength="15"
+                      cachedName="country"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[country]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[reports_to]"
+                      cachedDataType="i4"
+                      cachedName="reports_to"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[reports_to]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reports_to]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[manager_full_name]"
+                      cachedDataType="wstr"
+                      cachedLength="31"
+                      cachedName="manager_full_name"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[manager_name]"
+                      lineageId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Output].Columns[manager_full_name]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[Copy of birth_date]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of birth_date"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[birth_date]"
+                      lineageId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of birth_date]" />
+                    <inputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].Columns[Copy of hire_date]"
+                      cachedDataType="dbDate"
+                      cachedName="Copy of hire_date"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      lineageId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output].Columns[Copy of hire_date]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_key]"
+                      dataType="i4"
+                      name="employee_key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[employee_id]"
+                      dataType="i4"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[last_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[first_name]"
+                      dataType="wstr"
+                      length="50"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="50"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="50"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="50"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="50"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[reports_to]"
+                      dataType="i4"
+                      name="reports_to" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[manager_name]"
+                      dataType="wstr"
+                      length="100"
+                      name="manager_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[dwh_create_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="dwh_create_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[birth_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input].ExternalColumns[hire_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="hire_date" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="NORTHWIND_STAGING_DB Source"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[stg].[employees]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Connections[OleDbConnection]"
+                  connectionManagerID="{09EB84BB-8295-46B9-B022-3EF1D5791EC6}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[DESKTOP-V7D05LK.NORTHWIND_STAGING_DB]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_id]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[employee_id]"
+                      name="employee_id"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[last_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      length="20"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[last_name]"
+                      name="last_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[first_name]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      length="10"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[first_name]"
+                      name="first_name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[title]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      length="30"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[title]"
+                      name="title"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[title_of_courtesy]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[title_of_courtesy]"
+                      length="25"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[title_of_courtesy]"
+                      name="title_of_courtesy"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[birth_date]"
+                      name="birth_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[hire_date]"
+                      name="hire_date"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[address]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      length="60"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[address]"
+                      name="address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[city]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[city]"
+                      name="city"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[region]"
+                      name="region"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[postal_code]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[postal_code]"
+                      length="10"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[postal_code]"
+                      name="postal_code"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[country]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[country]"
+                      name="country"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[home_phone]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[home_phone]"
+                      length="24"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[home_phone]"
+                      name="home_phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[extension]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[extension]"
+                      length="4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[extension]"
+                      name="extension"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[photo]"
+                      dataType="image"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[photo]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[photo]"
+                      name="photo"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[notes]"
+                      dataType="nText"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[notes]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[notes]"
+                      name="notes"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reports_to]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[reports_to]"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[reports_to]"
+                      name="reports_to"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[photo_path]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[photo_path]"
+                      length="255"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[photo_path]"
+                      name="photo_path"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[stg_insert_date]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[stg_insert_date]"
+                      length="27"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].Columns[stg_insert_date]"
+                      name="stg_insert_date"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[employee_id]"
+                      dataType="i4"
+                      name="employee_id" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[last_name]"
+                      dataType="wstr"
+                      length="20"
+                      name="last_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[first_name]"
+                      dataType="wstr"
+                      length="10"
+                      name="first_name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[title]"
+                      dataType="wstr"
+                      length="30"
+                      name="title" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[title_of_courtesy]"
+                      dataType="wstr"
+                      length="25"
+                      name="title_of_courtesy" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[birth_date]"
+                      dataType="dbTimeStamp"
+                      name="birth_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[hire_date]"
+                      dataType="dbTimeStamp"
+                      name="hire_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[address]"
+                      dataType="wstr"
+                      length="60"
+                      name="address" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[city]"
+                      dataType="wstr"
+                      length="15"
+                      name="city" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[region]"
+                      dataType="wstr"
+                      length="15"
+                      name="region" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[postal_code]"
+                      dataType="wstr"
+                      length="10"
+                      name="postal_code" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[country]"
+                      dataType="wstr"
+                      length="15"
+                      name="country" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[home_phone]"
+                      dataType="wstr"
+                      length="24"
+                      name="home_phone" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[extension]"
+                      dataType="wstr"
+                      length="4"
+                      name="extension" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[photo]"
+                      dataType="image"
+                      name="photo" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[notes]"
+                      dataType="nText"
+                      name="notes" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[reports_to]"
+                      dataType="i4"
+                      name="reports_to" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[photo_path]"
+                      dataType="wstr"
+                      length="255"
+                      name="photo_path" />
+                    <externalMetadataColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output].ExternalColumns[stg_insert_date]"
+                      dataType="wstr"
+                      length="27"
+                      name="stg_insert_date" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[employee_id]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[employee_id]"
+                      name="employee_id" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      dataType="wstr"
+                      length="20"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[last_name]"
+                      name="last_name" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[first_name]"
+                      name="first_name" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[title]"
+                      dataType="wstr"
+                      length="30"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[title]"
+                      name="title" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[title_of_courtesy]"
+                      dataType="wstr"
+                      length="25"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[title_of_courtesy]"
+                      name="title_of_courtesy" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[birth_date]"
+                      name="birth_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      dataType="dbTimeStamp"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[hire_date]"
+                      name="hire_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[address]"
+                      dataType="wstr"
+                      length="60"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[address]"
+                      name="address" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[city]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[city]"
+                      name="city" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[region]"
+                      name="region" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[postal_code]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[postal_code]"
+                      name="postal_code" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[country]"
+                      dataType="wstr"
+                      length="15"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[country]"
+                      name="country" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[home_phone]"
+                      dataType="wstr"
+                      length="24"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[home_phone]"
+                      name="home_phone" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[extension]"
+                      dataType="wstr"
+                      length="4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[extension]"
+                      name="extension" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[photo]"
+                      dataType="image"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[photo]"
+                      name="photo" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[notes]"
+                      dataType="nText"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[notes]"
+                      name="notes" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[reports_to]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[reports_to]"
+                      name="reports_to" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[photo_path]"
+                      dataType="wstr"
+                      length="255"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[photo_path]"
+                      name="photo_path" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[stg_insert_date]"
+                      dataType="wstr"
+                      length="27"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[stg_insert_date]"
+                      name="stg_insert_date" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading dwh_dim_employees.Paths[Data Conversion Output]"
+              endId="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination.Inputs[OLE DB Destination Input]"
+              name="Data Conversion Output"
+              startId="Package\Loading dwh_dim_employees\Data Conversion.Outputs[Data Conversion Output]" />
+            <path
+              refId="Package\Loading dwh_dim_employees.Paths[Derived Column Output]"
+              endId="Package\Loading dwh_dim_employees\Data Conversion.Inputs[Data Conversion Input]"
+              name="Derived Column Output"
+              startId="Package\Loading dwh_dim_employees\Derived Column.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Loading dwh_dim_employees.Paths[Lookup Match Output]"
+              endId="Package\Loading dwh_dim_employees\Derived Column.Inputs[Derived Column Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading dwh_dim_employees\Lookup Manager Name.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading dwh_dim_employees.Paths[OLE DB Source Output]"
+              endId="Package\Loading dwh_dim_employees\Lookup Manager Name.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{58FFFD54-96B6-412E-8252-C28D0704FC1A}"
+      DTS:From="Package\Delete from dwh_dim_employees"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loading dwh_dim_employees" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="236,41.6"
+          Id="Package\Delete from dwh_dim_employees"
+          TopLeft="374.785715071827,63.6176470078811" />
+        <NodeLayout
+          Size="217.6,41.6"
+          Id="Package\Loading dwh_dim_employees"
+          TopLeft="146.214285949968,155.558823424176" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="492.785715071827,105.217647007881">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-237.771429121859,50.3411764162944"
+              Start="0,0"
+              End="-237.771429121859,42.8411764162944">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1705882081472" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1705882081472"
+                    Point2="0,25.1705882081472"
+                    Point3="-4,25.1705882081472" />
+                  <mssgle:LineSegment
+                    End="-233.771429121859,25.1705882081472" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-233.771429121859,25.1705882081472"
+                    Point2="-237.771429121859,25.1705882081472"
+                    Point3="-237.771429121859,29.1705882081472" />
+                  <mssgle:LineSegment
+                    End="-237.771429121859,42.8411764162944" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading dwh_dim_employees">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="152.8,41.6"
+          Id="Package\Loading dwh_dim_employees\Derived Column"
+          TopLeft="306.214286354427,124.794117542493" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Loading dwh_dim_employees\Lookup Manager Name"
+          TopLeft="121.928571420968,73.50000004558" />
+        <NodeLayout
+          Size="245.6,41.6"
+          Id="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source"
+          TopLeft="300.500000627977,17.7352941069223" />
+        <NodeLayout
+          Size="227.2,41.6"
+          Id="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination"
+          TopLeft="307.642857722178,232.02941159244" />
+        <NodeLayout
+          Size="155.2,41.6"
+          Id="Package\Loading dwh_dim_employees\Data Conversion"
+          TopLeft="156.928571623199,175.617646962301" />
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_employees.Paths[OLE DB Source Output]"
+          TopLeft="300.500000627977,38.5352941069224">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-84.9714292070093,34.9647059386577"
+              Start="0,0"
+              End="-84.9714292070093,27.4647059386577">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-80.9714292070093,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-80.9714292070093,0"
+                    Point2="-84.9714292070093,0"
+                    Point3="-84.9714292070093,4" />
+                  <mssgle:LineSegment
+                    End="-84.9714292070093,27.4647059386577" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_employees.Paths[Lookup Match Output]"
+          TopLeft="309.128571420968,94.30000004558">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="73.4857149334592,30.4941174969128"
+              Start="0,0"
+              End="73.4857149334592,22.9941174969128">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="69.4857149334592,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="69.4857149334592,0"
+                    Point2="73.4857149334592,0"
+                    Point3="73.4857149334592,4" />
+                  <mssgle:LineSegment
+                    End="73.4857149334592,22.9941174969128" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="25.2943282147092,-17.609375,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_employees.Paths[Derived Column Output]"
+          TopLeft="306.214286354427,145.594117542493">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-71.6857147312287,30.0235294198081"
+              Start="0,0"
+              End="-71.6857147312287,22.5235294198081">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="-67.6857147312287,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-67.6857147312287,0"
+                    Point2="-71.6857147312287,0"
+                    Point3="-71.6857147312287,4" />
+                  <mssgle:LineSegment
+                    End="-71.6857147312287,22.5235294198081" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading dwh_dim_employees.Paths[Data Conversion Output]"
+          TopLeft="312.128571623199,196.417646962301">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="109.114286098979,35.6117646301392"
+              Start="0,0"
+              End="109.114286098979,28.1117646301392">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="105.114286098979,0" />
+                  <mssgle:CubicBezierSegment
+                    Point1="105.114286098979,0"
+                    Point2="109.114286098979,0"
+                    Point3="109.114286098979,4" />
+                  <mssgle:LineSegment
+                    End="109.114286098979,28.1117646301392" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_employees\NORTHWIND_STAGING_DB Source">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_employees\Lookup Manager Name">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:string">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[stg].[employees]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:string">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading dwh_dim_employees\NORTHWIND_DWH Destination">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>
