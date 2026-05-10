@@ -1,0 +1,26 @@
+# SQL Server Integration Services (SSIS)
+*.user
+*.database
+*.obj
+bin/
+obj/
+TestResults/
+
+# Power BI
+*.pbit
+*.pbi.bak
+
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# Windows
+Thumbs.db
+Desktop.ini
+
+# Temp & sensitive files
+*.tmp
+*.log
