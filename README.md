@@ -12,17 +12,17 @@ This project follows a systematic approach to transform raw operational data int
 ### 🗄️ 1. Source System (OLTP)
 The journey begins with the Northwind RDBMS, a transactional database. The ERD was analyzed to identify key entities and relationships required for sales analysis.
 
-![ERD of OLTP DB](docs/Northwind OLTP DB.png)
+![ERD of OLTP DB](docs/Northwind_OLTP_DB.png)
 
 ### 🔄 2. ETL Data Pipeline (SSIS)
 Developed and automated robust **ETL Data Pipeline** using **SQL Server Integration Services (SSIS)** to orchestrate the seamless flow of data from the **OLTP** DB source to the **OLAP** Data Warehouse. The pipeline is architected into three strategic phases:
 
 - 1️⃣ **Extract to Staging Layer**: Mirrored **Raw Data** from the source into a dedicated staging area to ensure zero performance impact on the production environment.
 
-![Staging Layer Package](Screenshots-Staging-Layer-Packages/staging_order_details (1).png)
-![Staging Layer Package](Screenshots-Staging-Layer-Packages/staging_order_details (2).png)
+![Staging Layer Package](Screenshots-Staging-Layer-Packages/staging_order_details_(1).png)
+![Staging Layer Package](Screenshots-Staging-Layer-Packages/staging_order_details_(2).png)
 
-📌 Check all ETL Packages of the Staging Layer in: ![Screenshots of Staging Layer Packages](Screenshots-Staging-Layer-Packages)
+📌 Check all ETL Packages of the Staging Layer in: [Screenshots of Staging Layer Packages](Screenshots-Staging-Layer-Packages/)
 
 - 2️⃣ **Transformations**: Applied business logic, including data cleansing, handling null values, and flattening hierarchies. Calculated measures like `Sales Amount` were generated at this stage to ensure analytics readiness.
 
@@ -30,25 +30,25 @@ Developed and automated robust **ETL Data Pipeline** using **SQL Server Integrat
 
 #### ➜ Dim_Employees
 
-![Dim Employees Package](Screenshots-Data-Warehouse-Packages/dwh_dim_employees (1).png)
-![Dim Employees Package](Screenshots-Data-Warehouse-Packages/dwh_dim_employees (2).png)
+![Dim Employees Package](Screenshots-Data-Warehouse-Packages/dwh_dim_employees_(1).png)
+![Dim Employees Package](Screenshots-Data-Warehouse-Packages/dwh_dim_employees_(2).png)
 
 #### ➜ Dim_Products
 
-![Dim Products Package](Screenshots-Data-Warehouse-Packages/dwh_dim_products (1).png)
-![Dim Products Package](Screenshots-Data-Warehouse-Packages/dwh_dim_products (2).png)
+![Dim Products Package](Screenshots-Data-Warehouse-Packages/dwh_dim_products_(1).png)
+![Dim Products Package](Screenshots-Data-Warehouse-Packages/dwh_dim_products_(2).png)
 
 #### ➤ Fact_Sales
 
-![Fact Sales Package](Screenshots-Data-Warehouse-Packages/dwh_fact_sales (1).png)
-![Fact Sales Package](Screenshots-Data-Warehouse-Packages/dwh_fact_sales (2).png)
+![Fact Sales Package](Screenshots-Data-Warehouse-Packages/dwh_fact_sales_(1).png)
+![Fact Sales Package](Screenshots-Data-Warehouse-Packages/dwh_fact_sales_(2).png)
 
-📌 Check all ETL Packages of the Data Warehouse in: ![Screenshots of Data Warehouse Packages](Screenshots-Data-Warehouse-Packages)
+📌 Check all ETL Packages of the Data Warehouse in: [Screenshots of Data Warehouse Packages](Screenshots-Data-Warehouse-Packages/)
 
 ### ⭐ 3. Data Warehouse Modeling (Star Schema)
 The heart of the project is a **Star Schema** designed for performance and clarity. Various dimensional modeling techniques were implemented to ensure the data is **analytics-ready**.
 
-![Star Schema](docs/Star Schema.png)
+![Star Schema](docs/Star_Schema.png)
 
 #### 📜 Dimensional Modeling Details
 
