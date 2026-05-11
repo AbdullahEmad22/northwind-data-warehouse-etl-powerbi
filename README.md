@@ -22,7 +22,7 @@ Developed and automated robust **ETL Data Pipeline** using **SQL Server Integrat
 ![Staging Layer Package](Screenshots-Staging-Layer-Packages/staging_order_details_(1).png)
 ![Staging Layer Package](Screenshots-Staging-Layer-Packages/staging_order_details_(2).png)
 
-📌 Check all ETL Packages of the Staging Layer in: [Screenshots of Staging Layer Packages](Screenshots-Staging-Layer-Packages/)
+📌 Check all ETL Packages of the Staging Layer in: [Screenshots-Staging-Layer-Packages](Screenshots-Staging-Layer-Packages/)
 
 - 2️⃣ **Transformations**: Applied business logic, including data cleansing, handling null values, and flattening hierarchies. Calculated measures like `Sales Amount` were generated at this stage to ensure analytics readiness.
 
@@ -43,7 +43,7 @@ Developed and automated robust **ETL Data Pipeline** using **SQL Server Integrat
 ![Fact Sales Package](Screenshots-Data-Warehouse-Packages/dwh_fact_sales_(1).png)
 ![Fact Sales Package](Screenshots-Data-Warehouse-Packages/dwh_fact_sales_(2).png)
 
-📌 Check all ETL Packages of the Data Warehouse in: [Screenshots of Data Warehouse Packages](Screenshots-Data-Warehouse-Packages/)
+📌 Check all ETL Packages of the Data Warehouse in: [Screenshots-Data-Warehouse-Packages](Screenshots-Data-Warehouse-Packages/)
 
 ### ⭐ 3. Data Warehouse Modeling (Star Schema)
 The heart of the project is a **Star Schema** designed for performance and clarity. Various dimensional modeling techniques were implemented to ensure the data is **analytics-ready**.
