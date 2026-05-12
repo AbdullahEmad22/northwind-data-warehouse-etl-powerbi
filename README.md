@@ -139,13 +139,13 @@ northwind-data-warehouse-etl-powerbi/              # Repository Root
 │   └── Contains all screenshots of Execution Flow & Control Flow for all Staging Layer packages
 │
 ├── docs/                                          # Project documentation & architecture diagrams
-│   ├── Northwind OLTP DB.png
+│   ├── Northwind_OLTP_DB.png
 │   ├── Northwind_Dashboard.png
-│   └── Star Schema.png
+│   └── Star_Schema.png
 │
 ├── scripts/                                       # SQL scripts (DDL scripts for Staging Layer & DWH)
-│   ├── DDL Data Warehouse.sql
-│   └── DDL Staging Layer.sql
+│   ├── DDL_Data_Warehouse.sql
+│   └── DDL_Staging_Layer.sql
 │
 ├── source-oltp-database/                          # OLTP source system (Northwind backup DB)
 │   └── Northwind.bak
